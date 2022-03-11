@@ -38,7 +38,7 @@ export class Parser {
   /**
    * Parse Loop
    */
-  parse(tokens, top = true) {
+  async parse(tokens, top = true) {
     let out = '',
       i,
       j,
@@ -90,7 +90,7 @@ export class Parser {
           continue;
         }
         case 'code': {
-          out += this.renderer.code(token.text,
+          out += await this.renderer.code(token.text,
             token.lang,
             token.escaped);
           continue;

@@ -1,5 +1,4 @@
 const commonjs = require('@rollup/plugin-commonjs');
-const babel = require('@rollup/plugin-babel').default;
 const license = require('rollup-plugin-license');
 
 module.exports = [{
@@ -24,9 +23,6 @@ https://github.com/markedjs/marked
 `
     }),
     commonjs(),
-    babel({
-      presets: [['@babel/preset-env', { loose: true }]]
-    })
   ]
 },
 {
@@ -51,8 +47,5 @@ https://github.com/markedjs/marked
 `
     }),
     commonjs(),
-    babel({
-      presets: [['@babel/preset-env', { loose: true }]]
-    })
   ]
 }];

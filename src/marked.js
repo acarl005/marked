@@ -18,7 +18,7 @@ import {
 /**
  * Marked
  */
-export function marked(src, opt, callback) {
+export async function marked(src, opt, callback) {
   // throw error in case of non string input
   if (typeof src === 'undefined' || src === null) {
     throw new Error('marked(): input parameter is undefined or null');
@@ -46,7 +46,7 @@ export function marked(src, opt, callback) {
       return callback(e);
     }
 
-    const done = function(err) {
+    const done = async function(err) {
       let out;
 
       if (!err) {
@@ -54,7 +54,7 @@ export function marked(src, opt, callback) {
           if (opt.walkTokens) {
             marked.walkTokens(tokens, opt.walkTokens);
           }
-          out = Parser.parse(tokens, opt);
+          out = await Parser.parse(tokens, opt);
         } catch (e) {
           err = e;
         }
