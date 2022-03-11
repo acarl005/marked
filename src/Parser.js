@@ -129,7 +129,7 @@ export class Parser {
           continue;
         }
         case 'blockquote': {
-          body = this.parse(token.tokens);
+          body = await this.parse(token.tokens);
           out += this.renderer.blockquote(body);
           continue;
         }
@@ -165,7 +165,7 @@ export class Parser {
               }
             }
 
-            itemBody += this.parse(item.tokens, loose);
+            itemBody += await this.parse(item.tokens, loose);
             body += this.renderer.listitem(itemBody, task, checked);
           }
 
